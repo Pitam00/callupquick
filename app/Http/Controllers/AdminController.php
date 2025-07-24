@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin;
 use App\Models\Category;
+use App\Models\Business;
+use App\Models\BusinessLocation;
+use App\Models\BusinessContact;
+use App\Models\BusinessHour;
+use App\Models\BusinessCategory;
+use App\Models\BusinessAmenityMapping;
+use App\Models\BusinessPhoto;
+// use App\Models\Category;
+use App\Models\Amenity;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -300,7 +310,25 @@ class AdminController extends Controller
 
 
     // BUSINESS FUNCTIONS
-    public function bunsinesadd(){
-        return view("layouts.pages.businesadd");
+    public function bunsinesadd() {
+        $users = User::all();
+        $allCategories = Category::all();
+        $allAmenities = Amenity::all();
+
+        // Option 1: Use a config file (recommended)
+        // Create a config/countries.php file with your countries array
+        $countries = config('countries');
+
+        // Option 2: Use a hardcoded array as fallback
+        if (empty($countries)) {
+            $countries = [
+                'US' => 'United States',
+                'CA' => 'Canada',
+                'GB' => 'United Kingdom',
+                // Add more countries as needed
+            ];
+        }
+
+        return view('layouts.pages.businesadd', compact('users', 'allCategories', 'allAmenities', 'countries'));
     }
 }

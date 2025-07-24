@@ -41,6 +41,12 @@ class Category extends Model
         return $query->whereNull('parent_category_id');
     }
 
+    // FOR BUSINESS LETER I ADD
+    public function businesses()
+    {
+        return $this->belongsToMany(Business::class, 'business_categories', 'category_id', 'business_id');
+    }
+
     // use HasFactory, SoftDeletes;
     // use HasFactory;
 

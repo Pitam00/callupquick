@@ -14,7 +14,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $primaryKey = 'user_id';
     protected $table = 'users';
-    
+
     // public $incrementing = true;        // set to false if it's NOT auto-increment
     // protected $keyType = 'int';         // or 'string' if it's varchar
 
@@ -30,4 +30,16 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // FOR BUSINESS LETER I ADD
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'user_id');
+    }
+
+    public function uploadedPhotos()
+    {
+        return $this->hasMany(BusinessPhoto::class, 'uploaded_by');
+    }
 }

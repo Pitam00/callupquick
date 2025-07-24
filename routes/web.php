@@ -22,7 +22,8 @@ Route::group(['middleware'=> ['auth:admin'], 'prefix' => 'admin'], function() {
     Route::put('/categories/{category}', [AdminController::class, 'update'])->name('admin.categories.update');
 
     //BUSINESS ROUTES
-    Route::get('bunsiness/add', [AdminController::class,'bunsinesadd'])->name('bunsiness.add');
-    Route::get('bunsiness/store', [AdminController::class,'bunsinesstore'])->name('admin.businesses.store');
+    Route::get('/bunsiness/add', [AdminController::class,'bunsinesadd'])->name('bunsiness.add');
+    Route::get('/bunsiness/store', [AdminController::class,'bunsinesstore'])->name('admin.businesses.store');
+    Route::get('/businesses', [AdminController::class,'businesses'])->name('admin.businesses.index');
 });
 
