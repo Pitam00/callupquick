@@ -1,0 +1,521 @@
+@media (max-width: 320.98px) { 
+    #sidebar {
+        width: 0;
+        z-index: 999;
+        height: calc(100vh - 55px);
+        top: 55px;
+    }
+    .mini-sidebar #sidebar {
+        width: 280px;
+    }
+    .main-content, body.mini-sidebar .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main_header, body.mini-sidebar .main_header {
+        left: 0;
+    }
+    .header_links {
+        height: 55px;
+        width: 50px;
+    }
+    .header_links:before {
+        display: none;
+    }
+    .blink-animation {
+        right: 0;
+        bottom: 26px;
+    }
+    .tab_header {
+        flex-flow: wrap;
+        gap: 10px;
+    }
+    .tab_header b {
+        display: block;
+        width: 100%;
+    }
+    .tab_header .nav-tabs .nav-link {
+        padding: 5px 10px;
+    }
+    .revenue_name i {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    .revenue_name, .revenue_table tr td:last-child {
+        font-size: 12px;
+    }
+    .statNo b {
+        font-size: 24px;
+    }
+    .stat_card {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+    .main-content-title {
+        font-size: 15px;
+    }
+    li.breadcrumb-item {
+        font-size: 14px;
+    }
+    .main-content {
+        padding: 82px 25px 80px;
+    }
+    .statNo small {
+        margin-bottom: 5px;
+    }
+    .slide-setting-box {
+        max-width: 60%;
+        min-width: 60%;
+    }
+    .recent-notification, .user-info-box {
+        top: 61px;
+    }
+    .recent-notification:before, .user-info-box:before {
+        right: 20px;
+    }
+    .chart_area {
+        margin-bottom: 30px;
+    }
+
+    /* ---advance table--- */
+    #style_table th {
+        min-width: 120px;
+    }
+    #style_table th:nth-child(2){
+        min-width: 160px;
+    }
+    #style_table td:nth-child(2) {
+        font-size: 14px;
+    }
+    #style_table th:first-child {
+        min-width: auto;
+    }
+    .table_card_header, .table_card_body {
+        padding: 26px 15px !important;
+    }
+    .progress {
+        font-size: 10px;
+    }
+    #advance-table th {
+        min-width: 120px;
+    }
+    #advance-table th:first-child {
+        min-width: auto;
+    }
+    #advance-table th:nth-child(2) {
+        min-width: 250px;
+    }
+
+    /* --alerts-- */
+    .alert_wrap_header, .alert_wrapbody {
+        padding: 26px 15px !important;
+    }
+    .alert {
+        font-size: 14px;
+    }
+    #toastBox {
+        right: 15px;
+        padding: 15px;
+    }
+    .toast {
+        width: 280px;
+    }
+    .alert_wrapbody .buttons {
+        display: flex;
+        flex-flow: wrap;
+        gap: 5px;
+    }
+    /* ---basic table-- */
+    .formcard_header, .form_cardbody {
+        padding: 20px !important;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .form-group .col-form-label {
+        font-size: 14px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+ }
+
+ @media (min-width: 321px) and (max-width: 574.98px) { 
+    #sidebar {
+        width: 0;
+        z-index: 999;
+        height: calc(100vh - 55px);
+        top: 55px;
+    }
+    .mini-sidebar #sidebar {
+        width: 280px;
+    }
+    .main-content, body.mini-sidebar .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main_header, body.mini-sidebar .main_header {
+        left: 0;
+    }
+    .header_links {
+        height: 55px;
+        width: 50px;
+    }
+    .header_links:before {
+        display: none;
+    }
+    .blink-animation {
+        right: 0;
+        bottom: 26px;
+    }
+    .tab_header {
+        flex-flow: wrap;
+        gap: 10px;
+    }
+    .tab_header b {
+        display: block;
+        width: 100%;
+    }
+    .tab_header .nav-tabs .nav-link {
+        padding: 5px 10px;
+    }
+    .revenue_name i {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    .revenue_name, .revenue_table tr td:last-child {
+        font-size: 12px;
+    }
+    .statNo b {
+        font-size: 24px;
+    }
+    .stat_card {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+    .main-content-title {
+        font-size: 15px;
+    }
+    li.breadcrumb-item {
+        font-size: 14px;
+    }
+    .main-content {
+        padding: 82px 25px 80px;
+    }
+    .statNo small {
+        margin-bottom: 5px;
+    }
+    .slide-setting-box {
+        max-width: 70%;
+        min-width: 70%;
+    }
+    .recent-notification, .user-info-box {
+        top: 61px;
+    }
+    .recent-notification:before, .user-info-box:before {
+        right: 20px;
+    }
+    .chart_area {
+        margin-bottom: 30px;
+    }
+
+        /* ---advance table--- */
+        #style_table th {
+            min-width: 120px;
+        }
+        #style_table th:nth-child(2){
+            min-width: 160px;
+        }
+        #style_table td:nth-child(2) {
+            font-size: 14px;
+        }
+        #style_table th:first-child {
+            min-width: auto;
+        }
+        .table_card_header, .table_card_body {
+            padding: 26px 15px !important;
+        }
+        .progress {
+            font-size: 10px;
+        }
+        #advance-table th {
+            min-width: 120px;
+        }
+        #advance-table th:first-child {
+            min-width: auto;
+        }
+        #advance-table th:nth-child(2) {
+            min-width: 250px;
+        }
+
+        /* ----alerts-- */
+        .alert_wrap_header, .alert_wrapbody {
+            padding: 26px 15px !important;
+        }
+
+            /* ---basic table-- */
+    .formcard_header, .form_cardbody {
+        padding: 20px !important;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .form-group .col-form-label {
+        font-size: 14px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .formcard_header {
+        padding: 20px;
+    }
+
+    .alert_wrap_header, .alert_wrapbody {
+        padding: 26px 15px !important;
+    }
+    .alert {
+        font-size: 14px;
+    }
+    #toastBox {
+        right: 2%;
+        padding: 15px;
+    }
+    .toast {
+        width: 300px;
+    }
+    .alert_wrapbody .buttons {
+        display: flex;
+        flex-flow: wrap;
+        gap: 5px;
+    }
+  }
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    #sidebar {
+        width: 0;
+        z-index: 999;
+        height: calc(100vh - 55px);
+        top: 55px;
+    }
+    .mini-sidebar #sidebar {
+        width: 280px;
+    }
+    .main-content, body.mini-sidebar .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main_header, body.mini-sidebar .main_header {
+        left: 0;
+    }
+    .header_links {
+        height: 55px;
+        width: 50px;
+    }
+    .header_controls .header_links:last-child::before, .header_left .header_links:last-child::before {
+        display: none;
+    }
+    .main-content {
+        padding: 82px 25px 80px;
+    }
+    .blink-animation {
+        right: -3px;
+        bottom: 27px;
+    }
+    .chart_area {
+        margin-bottom: 30px;
+    }
+    .statNo b {
+        font-size: 24px;
+    }
+    .recent-notification, .user-info-box {
+        top: 61px;
+    }
+    .recent-notification:before, .user-info-box:before {
+        right: 15px;
+    }
+
+    /* ---advance table-- */
+    #advance-table th:nth-child(2) {
+        min-width: 250px;
+    }
+    #advance-table th:nth-child(3) {
+        min-width: 200px;
+    }
+    #style_table th:nth-child(2) {
+        min-width: 160px;
+    }
+    #style_table th:nth-child(3) {
+        min-width: 160px;
+    }
+    .progress {
+        font-size: 10px;
+    }
+    #style_table td:nth-child(2) {
+        font-size: 14px;
+    }
+ }
+
+
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    #sidebar {
+        width: 0;
+        z-index: 999;
+        height: calc(100vh - 55px);
+        top: 55px;
+    }
+    .mini-sidebar #sidebar {
+        width: 280px;
+    }
+    .main-content, body.mini-sidebar .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main_header, body.mini-sidebar .main_header {
+        left: 0;
+    }
+    .header_links {
+        height: 55px;
+        width: 50px;
+    }
+    .header_controls .header_links:last-child::before, .header_left .header_links:last-child::before {
+        display: none;
+    }
+    .blink-animation {
+        right: -2px;
+        bottom: 27px;
+    }
+    .tab_title {
+        display: block;
+        width: 100%;
+    }
+    .tab_header {
+        flex-flow: wrap;
+        gap: 10px;
+    }
+    .tab_header .nav-link {
+        padding: 5px 10px;
+    }
+    .revenue_name i {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    .revenue_name, .revenue_table tr td:last-child {
+        font-size: 14px;
+    }
+    .main-content {
+        padding: 82px 25px 90px;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+    #sidebar {
+        width: 0;
+        z-index: 999;
+        height: calc(100vh - 55px);
+        top: 55px;
+    }
+    .mini-sidebar #sidebar {
+        width: 280px;
+    }
+    .main-content, body.mini-sidebar .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main_header, body.mini-sidebar .main_header {
+        left: 0;
+    }
+    .header_links {
+        height: 55px;
+        width: 50px;
+    }
+    .header_controls .header_links:last-child::before, .header_left .header_links:last-child::before {
+        display: none;
+    }
+    .statNo b {
+        font-size: 20px;
+    }
+    .stat_card {
+        padding: 15px;
+    }
+    .stat_card::after {
+        right: -90px;
+    }
+    .blink-animation {
+        right: -2px;
+        bottom: 28px;
+    }
+    .tab_header {
+        flex-flow: wrap;
+        gap: 5px;
+    }
+    .revenue_name i {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    .revenue_name, .revenue_table tr td:last-child {
+        font-size: 14px;
+    }
+    .main-content {
+        padding: 92px 25px 80px;
+    }
+    .recent-notification, .user-info-box {
+        top: 56px;
+    }
+    .recent-notification:before, .user-info-box:before {
+        right: 18px;
+    }
+   }
+
+
+   @media (min-width: 1200px) and (max-width: 1399.98px){
+    .statNo b {
+        font-size: 18px;
+    }
+    .stat_card {
+        padding: 15px;
+    }
+    .stat_card::after {
+        right: -88px;
+    }
+    .tab_header {
+        gap: 10px;
+        flex-flow: wrap;
+    }
+    .tab_header .nav-tabs .nav-link {
+        padding: 8px 12px;
+    }
+    .revenue_name i {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    .revenue_name {
+        font-size: 14px;
+    }
+    .revenue_table tr td:last-child {
+        font-size: 12px;
+    }
+    .main-content {
+        padding: 112px 25px 75px;
+    }
+   }
+
+   @media (min-width: 1400px) and (max-width: 1899.98px){
+    .tab_header .nav-tabs .nav-link {
+        padding: 8px 12px;
+    }
+    .tab_header {
+        gap: 10px;
+        flex-flow: wrap;
+    }
+    .revenue_name i {
+        width: 30px;
+        height: 30px;
+    }
+    .main-content {
+        padding: 112px 25px 80px;
+    }
+   }

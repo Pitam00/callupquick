@@ -1,0 +1,8 @@
+[2025-07-18 08:41:43] local.ERROR: Cannot declare class App\Models\User, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\User, because the name is already in use at /home/elphill/0.PITAM WORKDRIVE/LARAVEL_18-07/LARAVEL/cuq/callupquick/app/Models/User_old.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2025-07-18 08:41:43] local.ERROR: Cannot declare class App\Models\User, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\User, because the name is already in use at /home/elphill/0.PITAM WORKDRIVE/LARAVEL_18-07/LARAVEL/cuq/callupquick/app/Models/User_old.php:11)
+[stacktrace]
+#0 {main}
+"} 
