@@ -23,7 +23,9 @@ Route::group(['middleware'=> ['auth:admin'], 'prefix' => 'admin'], function() {
 
     //BUSINESS ROUTES
     Route::get('/bunsiness/add', [AdminController::class,'bunsinesadd'])->name('bunsiness.add');
-    Route::get('/bunsiness/store', [AdminController::class,'bunsinesstore'])->name('admin.businesses.store');
+    Route::post('/bunsiness/store', [AdminController::class,'bunsinesstore'])->name('admin.businesses.store');
     Route::get('/businesses', [AdminController::class,'businesses'])->name('admin.businesses.index');
+    Route::get('/get-states/{country_id}', [AdminController::class, 'getStates']);
+    Route::get('/get-cities/{state_id}', [AdminController::class, 'getCities']);
 });
 

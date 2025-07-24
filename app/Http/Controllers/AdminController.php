@@ -16,7 +16,9 @@ use App\Models\BusinessHour;
 use App\Models\BusinessCategory;
 use App\Models\BusinessAmenityMapping;
 use App\Models\BusinessPhoto;
-// use App\Models\Category;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\City;
 use App\Models\Amenity;
 use App\Models\User;
 
@@ -314,21 +316,191 @@ class AdminController extends Controller
         $users = User::all();
         $allCategories = Category::all();
         $allAmenities = Amenity::all();
+        $countries = Country::all(); // Fetch from DB
+        return view('layouts.pages.businesadd', compact('users', 'allCategories', 'allAmenities', 'countries'));
+    }
+    public function getStates($country_id)
+    {
 
-        // Option 1: Use a config file (recommended)
-        // Create a config/countries.php file with your countries array
-        $countries = config('countries');
+        return response()->json(State::where('country_id', $country_id)->get());
+    }
 
-        // Option 2: Use a hardcoded array as fallback
-        if (empty($countries)) {
-            $countries = [
-                'US' => 'United States',
-                'CA' => 'Canada',
-                'GB' => 'United Kingdom',
-                // Add more countries as needed
-            ];
+    public function getCities($state_id)
+    {
+        return response()->json(City::where('state_id', $state_id)->get());
+    }
+
+    public function bunsinesstore(Request $request)
+    {
+        // dd($request);
+        $validated = $request->validate([
+            'business_name' => 'required|string|max:255',
+            'user_id' => 'nullable',
+            'description' => 'nullable|string',
+            'establishment_year' => 'nullable|integer|min:1800|max:' . date('Y'),
+            'employee_count' => 'nullable|integer|min:0',
+            'ownership_type' => 'nullable|in:sole_proprietorship,partnership,corporation,llc',
+            'website_url' => 'nullable|url',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'is_verified' => 'nullable|in:on',
+            'is_claimed' => 'nullable|in:on',
+
+            // Location validation
+            'address_line1' => 'required|string|max:255',
+            'address_line2' => 'nullable|string|max:255',
+            'landmark' => 'nullable|string|max:255',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'postal_code' => 'nullable',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'is_primary' => 'nullable|in:on',
+
+            // Contacts validation
+            'contacts' => 'required|array|min:1',
+            'contacts.*.contact_type' => 'required|in:phone,email,fax,whatsapp',
+            'contacts.*.contact_value' => 'required|string|max:255',
+            'contacts.*.is_primary' => 'nullable|in:on',
+
+            // Hours validation
+            'hours' => 'nullable|array',
+            'hours.*.open_time' => 'nullable|date_format:H:i',
+            'hours.*.close_time' => 'nullable|date_format:H:i',
+            'hours.*.is_closed' => 'nullable|in:on',
+
+            // Categories validation
+            'categories' => 'required|array|min:1',
+            'categories.*' => 'exists:categories,category_id',
+            'primary_category' => 'required',
+
+            // Amenities validation
+            'amenities' => 'nullable|array',
+            'amenities.*' => 'exists:amenities,amenity_id',
+
+            // Photos validation
+            'photos' => 'nullable|array',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+        ]);
+
+        // dd($validated);
+
+        // Create the business
+        $businessData = [
+            'user_id' => $validated['user_id'],
+            'business_name' => $validated['business_name'],
+            'description' => $validated['description'],
+            'establishment_year' => $validated['establishment_year'],
+            'employee_count' => $validated['employee_count'],
+            'ownership_type' => $validated['ownership_type'],
+            'website_url' => $validated['website_url'],
+            'is_verified' => $request->has('is_verified'),
+            'is_claimed' => $request->has('is_claimed'),
+        ];
+
+        // Handle logo upload
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('business_logos', 'public');
+            $businessData['logo_url'] = Storage::url($logoPath);
         }
 
-        return view('layouts.pages.businesadd', compact('users', 'allCategories', 'allAmenities', 'countries'));
+        $business = Business::create($businessData);
+
+        // Create location
+        $location = BusinessLocation::create([
+            'business_id' => $business->business_id,
+            'address_line1' => $validated['address_line1'],
+            'address_line2' => $validated['address_line2'],
+            'landmark' => $validated['landmark'],
+            'city' => $validated['city'],
+            'state' => $validated['state'],
+            'country' => $validated['country'],
+            'postal_code' => $validated['postal_code'],
+            'latitude' => $validated['latitude'],
+            'longitude' => $validated['longitude'],
+            'is_primary' => $request->has('is_primary'),
+        ]);
+
+        // Create contacts
+        foreach ($validated['contacts'] as $contact) {
+            BusinessContact::create([
+                'business_id' => $business->business_id,
+                'contact_type' => $contact['contact_type'],
+                'contact_value' => $contact['contact_value'],
+                'is_primary' => isset($contact['is_primary']),
+            ]);
+        }
+
+        // Create business hours
+        // if (isset($validated['hours'])) {
+        //     foreach ($validated['hours'] as $day => $hours) {
+        //         BusinessHour::create([
+        //             'business_id' => $business->business_id,
+        //             'day_of_week' => $day,
+        //             'open_time' => $hours['open_time'],
+        //             'close_time' => $hours['close_time'],
+        //             'is_closed' => isset($hours['is_closed']),
+        //         ]);
+        //     }
+        // }
+        if (isset($validated['hours'])) {
+            foreach ($validated['hours'] as $day => $hours) {
+                // Skip if both open_time and close_time are missing and not marked as closed
+                $isClosed = isset($hours['is_closed']);
+
+                if (!$isClosed && (!isset($hours['open_time']) || !isset($hours['close_time']))) {
+                    continue; // or throw a validation error if this shouldn't happen
+                }
+
+                BusinessHour::create([
+                    'business_id' => $business->business_id,
+                    'day_of_week' => $day,
+                    'open_time' => $hours['open_time'] ?? null,
+                    'close_time' => $hours['close_time'] ?? null,
+                    'is_closed' => $isClosed,
+                ]);
+            }
+        }
+
+
+        // Create categories
+        foreach ($validated['categories'] as $categoryId) {
+            BusinessCategory::create([
+                'business_id' => $business->business_id,
+                'category_id' => $categoryId,
+                'is_primary' => ($categoryId == $validated['primary_category']),
+            ]);
+        }
+
+        // Create amenities
+        if (isset($validated['amenities'])) {
+            foreach ($validated['amenities'] as $amenityId) {
+                BusinessAmenityMapping::create([
+                    'business_id' => $business->business_id,
+                    'amenity_id' => $amenityId,
+                ]);
+            }
+        }
+
+        // Handle photos upload
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $photoPath = $photo->store('business_photos', 'public');
+
+                BusinessPhoto::create([
+                    'business_id' => $business->business_id,
+                    'photo_url' => Storage::url($photoPath),
+                    'uploaded_by' => auth()->id(),
+                    'is_approved' => true,
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.businesses.index')
+            ->with('success', 'Business created successfully');
+    }
+
+    public function businesses(){
+        dd("end today");
     }
 }
