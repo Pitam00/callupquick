@@ -27,5 +27,8 @@ Route::group(['middleware'=> ['auth:admin'], 'prefix' => 'admin'], function() {
     Route::get('/businesses', [AdminController::class,'businesses'])->name('admin.businesses.index');
     Route::get('/get-states/{country_id}', [AdminController::class, 'getStates']);
     Route::get('/get-cities/{state_id}', [AdminController::class, 'getCities']);
+    Route::delete('businesses/{business}', [AdminController::class, 'destroybusiness'])->name('businesses.delete');
+    Route::get('businesses/{business}/edit', [AdminController::class, 'edit'])->name('admin.businesses.edit');
+    Route::get('businesses/{business}/show', [AdminController::class,'show'])->name('admin.businesses.show');
 });
 

@@ -45,6 +45,11 @@
                     <span><i class="ri-apps-line"></i></span> <b>Business Add</b>
                 </a>
             </li>
+            <li class="sidenav_li {{ request()->routeIs("admin.businesses.index") ? "active_menu" : "" }}">
+                <a href="{{ route("admin.businesses.index") }}" class="sidenav_navlink">
+                    <span><i class="ri-apps-line"></i></span> <b>Business List</b>
+                </a>
+            </li>
 
             <!-- Other menu items -->
         </ul>

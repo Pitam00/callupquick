@@ -500,7 +500,147 @@ class AdminController extends Controller
             ->with('success', 'Business created successfully');
     }
 
-    public function businesses(){
-        dd("end today");
+    // public function businesses(Request $request){
+    //     // if ($request->ajax()) {
+    //     //     $data = Business::with(['location', 'primaryCategory', 'contacts' => function($query) {
+    //     //         $query->where('is_primary', true);
+    //     //     }])->select('*');
+
+    //     //     return DataTables::of($data)
+    //     //         ->addIndexColumn()
+    //     //         ->addColumn('action', function($row){
+    //     //             $btn = '<a href="'.route('admin.businesses.edit', $row->business_id).'" class="edit btn btn-primary btn-sm">Edit</a>';
+    //     //             $btn .= ' <a href="'.route('admin.businesses.show', $row->business_id).'" class="show btn btn-info btn-sm">View</a>';
+    //     //             $btn .= ' <button class="delete btn btn-danger btn-sm" data-id="'.$row->business_id.'">Delete</button>';
+    //     //             return $btn;
+    //     //         })
+    //     //         ->addColumn('location', function($row) {
+    //     //             return $row->location ?: null;
+    //     //         })
+    //     //         ->addColumn('primary_contact', function($row) {
+    //     //             $primaryContact = $row->contacts->first();
+    //     //             return $primaryContact ? $primaryContact->contact_value : null;
+    //     //         })
+    //     //         ->rawColumns(['action'])
+    //     //         ->make(true);
+    //     // }
+    //     if ($request->ajax()) {
+    //         $data = Business::with(['location', 'primaryCategory', 'contacts' => function($query) {
+    //             $query->where('is_primary', true);
+    //         }])->get();
+    //         dd($data);
+
+    //         return response()->json([
+    //             'draw' => $request->input('draw'),
+    //             'recordsTotal' => Business::count(),
+    //             'recordsFiltered' => Business::count(),
+    //             'data' => $data->map(function($item, $key) {
+    //                 return [
+    //                     'DT_RowIndex' => $key + 1,
+    //                     'business_name' => $item->business_name,
+    //                     'category' => $item->primaryCategory->category_name ?? '',
+    //                     'location' => $item->location ? $item->location->city.', '.$item->location->state : '',
+    //                     'contact' => $item->contacts->first()->contact_value ?? '',
+    //                     'action' => '
+    //                         <div class="action-btns">
+    //                             <a href="'.route('admin.businesses.edit', $item->business_id).'" class="btn btn-sm btn-primary">
+    //                                 <i class="fa fa-edit"></i>
+    //                             </a>
+    //                             <a href="'.route('admin.businesses.show', $item->business_id).'" class="btn btn-sm btn-info">
+    //                                 <i class="fa fa-eye"></i>
+    //                             </a>
+    //                             <button class="btn btn-sm btn-danger delete-btn" data-id="'.$item->business_id.'">
+    //                                 <i class="fa fa-trash"></i>
+    //                             </button>
+    //                         </div>
+    //                     '
+    //                 ];
+    //             })
+    //         ]);
+    //     }
+
+
+    //     return view('layouts.pages.businesslist');
+    // }
+
+    public function businesses(Request $request)
+{
+    if ($request->ajax()) {
+        $data = Business::with([
+                'location',
+                'primaryCategory',
+                'contacts' => function($query) {
+                    $query->where('is_primary', true);
+                }
+            ])->get();
+
+        // dd($data);
+
+        return response()->json([
+            'draw' => $request->input('draw'),
+            'recordsTotal' => Business::count(),
+            'recordsFiltered' => Business::count(),
+            'data' => $data->map(function($item, $key) {
+                // Safely access relationships with null checks
+                $location = $item->location;
+                $primaryCategory = $item->primaryCategory;
+                $primaryContact = $item->contacts->first();
+
+                return [
+                    'DT_RowIndex' => $key + 1,
+                    'business_id' => $item->business_id,
+                    'logo' => $item->logo_url
+                        ? '<img src="'.$item->logo_url.'" class="img-thumbnail" width="50">'
+                        : 'No logo',
+                    'business_name' => $item->business_name,
+                    'category' => $primaryCategory->category_name ?? 'N/A',
+                    'location' => $location
+                        ? implode(', ', array_filter([$location->city, $location->state]))
+                        : 'N/A',
+                    'contact' => $primaryContact->contact_value ?? 'N/A',
+                    'status' => $this->getStatusBadges($item),
+                    'action' => $this->getActionButtons($item)
+                ];
+            })
+        ]);
+    }
+
+    return view('layouts.pages.businesslist');
+}
+
+protected function getStatusBadges($business)
+{
+    $badges = [];
+    if ($business->is_verified) {
+        $badges[] = '<span class="badge bg-success">Verified</span>';
+    }
+    if ($business->is_claimed) {
+        $badges[] = '<span class="badge bg-primary">Claimed</span>';
+    }
+    return $badges ? implode(' ', $badges) : '<span class="badge bg-secondary">Pending</span>';
+}
+
+protected function getActionButtons($business)
+{
+    return '<div class="btn-group">
+        <a href="'.route('admin.businesses.edit', $business->business_id).'" class="btn btn-sm btn-primary">
+            <i class="fa fa-edit"></i>
+        </a>
+        <a href="'.route('admin.businesses.show', $business->business_id).'" class="btn btn-sm btn-info">
+            <i class="fa fa-eye"></i>
+        </a>
+        <button class="btn btn-sm btn-danger delete-btn" data-id="'.$business->business_id.'">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>';
+}
+
+    public function destroybusiness($id){
+        $business = Business::findOrFail($id);
+        $business->delete();
+
+        return response()->json([
+            'message' => 'Business deleted successfully'
+        ]);
     }
 }

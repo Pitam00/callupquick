@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::51dY2qybUjVqVIk7',
+            '_route' => 'generated::MHgMQ9LCX6W1WtNQ',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vgOZc2xZYKxObcaa',
+            '_route' => 'generated::jq7EUidGfY5UxApx',
           ),
           1 => NULL,
           2 => 
@@ -141,12 +141,32 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vZcEwRpn33CgCHNO',
+            '_route' => 'generated::N93M1F4vYO0Zuyvq',
           ),
           1 => NULL,
           2 => 
           array (
             'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/categories' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::7t8PiL5vixSeejgx',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -160,7 +180,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::XvkMyfa8nKAsq6wp',
+            '_route' => 'generated::8tiI2bnEA7wwbe1c',
           ),
           1 => NULL,
           2 => 
@@ -391,11 +411,34 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|categories/([^/]++)(?|(*:39)|/edit(*:51)|(*:58))|get\\-(?|states/([^/]++)(*:89)|cities/([^/]++)(*:111))))/?$}sDu',
+      0 => '{^(?|/a(?|pi/categories/([^/]++)(*:34)|dmin/(?|categories/([^/]++)(?|(*:71)|/edit(*:83)|(*:90))|get\\-(?|states/([^/]++)(*:121)|cities/([^/]++)(*:144))|businesses/([^/]++)(?|(*:175)|/(?|edit(*:191)|show(*:203))))))/?$}sDu',
     ),
     3 => 
     array (
-      39 => 
+      34 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::bqKCXIy16BjyDlvZ',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      71 => 
       array (
         0 => 
         array (
@@ -417,7 +460,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      51 => 
+      83 => 
       array (
         0 => 
         array (
@@ -440,7 +483,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      58 => 
+      90 => 
       array (
         0 => 
         array (
@@ -462,13 +505,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      89 => 
+      121 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::Z91wbPHOY91eYMru',
+            '_route' => 'generated::wHxmJwPHs3FEt75D',
           ),
           1 => 
           array (
@@ -485,13 +528,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      111 => 
+      144 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::sQi5rubw1GYyFkic',
+            '_route' => 'generated::1b9Crgs7hn8ZQ006',
           ),
           1 => 
           array (
@@ -505,6 +548,74 @@ app('router')->setCompiledRoutes(
           3 => NULL,
           4 => false,
           5 => true,
+          6 => NULL,
+        ),
+      ),
+      175 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'businesses.delete',
+          ),
+          1 => 
+          array (
+            0 => 'business',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      191 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.businesses.edit',
+          ),
+          1 => 
+          array (
+            0 => 'business',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      203 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.businesses.show',
+          ),
+          1 => 
+          array (
+            0 => 'business',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
           6 => NULL,
         ),
         1 => 
@@ -669,7 +780,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::51dY2qybUjVqVIk7' => 
+    'generated::MHgMQ9LCX6W1WtNQ' => 
     array (
       'methods' => 
       array (
@@ -692,7 +803,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::51dY2qybUjVqVIk7',
+        'as' => 'generated::MHgMQ9LCX6W1WtNQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -708,7 +819,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vgOZc2xZYKxObcaa' => 
+    'generated::jq7EUidGfY5UxApx' => 
     array (
       'methods' => 
       array (
@@ -728,7 +839,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::vgOZc2xZYKxObcaa',
+        'as' => 'generated::jq7EUidGfY5UxApx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -744,7 +855,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vZcEwRpn33CgCHNO' => 
+    'generated::N93M1F4vYO0Zuyvq' => 
     array (
       'methods' => 
       array (
@@ -764,7 +875,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::vZcEwRpn33CgCHNO',
+        'as' => 'generated::N93M1F4vYO0Zuyvq',
       ),
       'fallback' => false,
       'defaults' => 
@@ -780,7 +891,81 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::XvkMyfa8nKAsq6wp' => 
+    'generated::7t8PiL5vixSeejgx' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/categories',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::7t8PiL5vixSeejgx',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::bqKCXIy16BjyDlvZ' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/categories/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::bqKCXIy16BjyDlvZ',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::8tiI2bnEA7wwbe1c' => 
     array (
       'methods' => 
       array (
@@ -801,7 +986,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::XvkMyfa8nKAsq6wp',
+        'as' => 'generated::8tiI2bnEA7wwbe1c',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1343,7 +1528,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Z91wbPHOY91eYMru' => 
+    'generated::wHxmJwPHs3FEt75D' => 
     array (
       'methods' => 
       array (
@@ -1365,7 +1550,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Z91wbPHOY91eYMru',
+        'as' => 'generated::wHxmJwPHs3FEt75D',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1381,7 +1566,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::sQi5rubw1GYyFkic' => 
+    'generated::1b9Crgs7hn8ZQ006' => 
     array (
       'methods' => 
       array (
@@ -1403,7 +1588,120 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::sQi5rubw1GYyFkic',
+        'as' => 'generated::1b9Crgs7hn8ZQ006',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'businesses.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'admin/businesses/{business}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AdminController@destroybusiness',
+        'controller' => 'App\\Http\\Controllers\\AdminController@destroybusiness',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'businesses.delete',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.businesses.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/businesses/{business}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AdminController@edit',
+        'controller' => 'App\\Http\\Controllers\\AdminController@edit',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'admin.businesses.edit',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.businesses.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/businesses/{business}/show',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AdminController@show',
+        'controller' => 'App\\Http\\Controllers\\AdminController@show',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'admin.businesses.show',
       ),
       'fallback' => false,
       'defaults' => 
